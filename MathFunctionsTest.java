@@ -115,7 +115,11 @@ public class MathFunctionsTest
         long n = 3;
         assertTrue(MathFunctions.istSummeVonPotenzen(n));
     }
-
+    @Test
+    public void istSummeVonPotenzenFalseTest() {
+        long n = 4;
+        assertTrue(MathFunctions.istSummeVonPotenzen(n));
+    }
     @Test
     public void istSummeVonPotenzen2Test() {
         long n = 25;
@@ -166,5 +170,29 @@ public class MathFunctionsTest
         double expected = 0.222222;
         double actual = MathFunctions.berechneReihensumme(n, x);
         assertEquals (expected, actual, delta);
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void berechneReihensummeNull1Test() {
+        int n = 0;
+        double x = 3;
+        double delta = 0.01;
+        double expected = 0.222222;
+        MathFunctions.berechneReihensumme(n, x);
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void berechneReihensummeNull2Test() {
+        int n = 2;
+        double x = 0;
+        double delta = 0.01;
+        double expected = 0.222222;
+        MathFunctions.berechneReihensumme(n, x);
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void berechneReihensummeNull3Test() {
+        int n = 0;
+        double x = 0;
+        double delta = 0.01;
+        double expected = 0.222222;
+        MathFunctions.berechneReihensumme(n, x);
     }
 }

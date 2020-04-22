@@ -10,6 +10,7 @@ public class MathFunctions
      * Klassenkonstanten
      */
     private static final String NEGATIV = "Die eingegebene Zahl ist kleiner als 0!";
+    private static final String NULL = "Die eingegebene Zahl darf nicht 0 sein!";
     private static final String ISBN_FALSCH = "Die ISBN ist nicht 9-stellig!";
     private static final long MIN_ISBN = 100000000;
     private static final long MAX_ISBN = 999999999;
@@ -111,7 +112,7 @@ public class MathFunctions
      */
     public static double berechneReihensumme (int n, double x){
         double s = 0;
-        Validator.check(n <= 0, NEGATIV);
+        Validator.check(n == 0 || x == 0, NULL);
         s = (Math.pow((x-1),n)) / (n * (Math.pow(x,n)));
         return s;
     }
