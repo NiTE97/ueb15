@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=MathFunctions
+comment0.text=\n\ Klasse\ MathFunctions.\n\ \n\ @author\ (Niklas\ Terwort\ &&\ Tobias\ Steuer)\ \n
+comment1.params=zahl
+comment1.target=long\ berechneTeilersumme(long)
+comment1.text=\n\ Methode\ zum\ Berechnen\ der\ Teilersumme\n\ param\ long\ zahl\n\ \n\ return\ long\ teilersumme\n
+comment2.params=isbn
+comment2.target=java.lang.String\ berechneChecksummeIsbn(long)
+comment2.text=\n\ Methode\ zum\ Berechnen\ der\ Checksumme\ der\ ISBN\n\ param\ long\ isbn\n\ \n\ return\ String\ checksumme\n
+comment3.params=p\ q
+comment3.target=java.lang.String\ berechneNullstellen(double,\ double)
+comment3.text=\n\ Methode\ zum\ Berechnen\ der\ Nullstellen\n\ param\ double\ p\n\ param\ double\ q\n\ \n\ return\ String\ nullstellen\n
+comment4.params=n
+comment4.target=boolean\ istSummeVonPotenzen(long)
+comment4.text=\n\ Methode\ zum\ Ueberpruefen,\ ob\ einer\ Zahl\ Summe\ aus\ Potenzen\ ist\n\ param\ long\ n\n\ \n\ return\ boolean\ istSummeVonPotenzen\n
+comment5.params=n\ x
+comment5.target=double\ berechneReihensumme(int,\ double)
+comment5.text=\n\ Methode\ zum\ Berechnen\ der\ Reihensumme\n\ param\ int\ m\n\ param\ double\ x\n\n\ (x-1)^n\ /\ nx^n\n\n\ return\ double\ ergebnis\n
+numComments=6

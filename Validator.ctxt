@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Validator
+comment1.params=bedingung\ msg
+comment1.target=void\ check(boolean,\ java.lang.String)
+numComments=2
