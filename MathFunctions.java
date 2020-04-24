@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.io.*;
 
@@ -18,6 +19,9 @@ public class MathFunctions
     private static final long MIN_ISBN = 100000000;
     private static final long MAX_ISBN = 999999999;
     private static final double EPSILON = 1.0E-08;
+
+    private static BufferedWriter output = null;
+    private static File file = new File("output.txt");
     /**
      * Methode zum Berechnen der Teilersumme
      * param long zahl
@@ -206,14 +210,41 @@ public class MathFunctions
             long startTime = System.nanoTime();   
             istPalindrom(wort);
             long endTime = System.nanoTime();
-            FileOutputStream out = null;
+            long dauer = (endTime - startTime);
+            return dauer;
+        }
+
+        public String testReihe(){
+            ArrayList <String> buchstaben = new ArrayList <String>();
+            String a = "aa";
+            PalindromIterativ p1 = new PalindromIterativ();
+            StringBuffer sb = null;
+            StringBuffer ausgabe = new StringBuffer();
+            
             try{
-                out = new FileOutputStream("output.txt");
-                out.write((int)(endTime - startTime));
-            }catch(IOException e) {
-                e.printStackTrace();
+                if (!file.exists()) {
+                    file.createNewFile();
+                }
+                output = new BufferedWriter(new FileWriter(file));
+                for (int i = 0; i < 25; i++){
+                    buchstaben.add(a); 
+                    sb = new StringBuffer();
+                    for (String wort : buchstaben) {
+                        sb.append(wort);
+                    }
+                    output.write(p1.istPalindromCheckTime(sb.toString()) + ", ");
+                }
+            }catch (IOException e) {
+                e.printStackTrace();   
+            }finally{
+                try{
+                    output.flush();
+                    output.close();
+                }catch (IOException e) {
+                    e.printStackTrace(); 
+                }
             }
-            return endTime - startTime;
+            return ausgabe.toString();        
         }
 
         static class PalindromRekursiv implements Palindrom
@@ -224,28 +255,28 @@ public class MathFunctions
             @Override
             public String dateiEinlesen(){
                 File datei = new File("input.txt");
-            StringBuffer sb = new StringBuffer();
+                StringBuffer sb = new StringBuffer();
 
-            try {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(datei)));
-                String zeile;
-                ArrayList <Character> buchstaben = new ArrayList <Character>();
-                while ((zeile = reader.readLine()) != null){
-                    for(int i = 0; i < zeile.length(); i++){
-                        buchstaben.add(zeile.charAt(i)); 
+                try {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(datei)));
+                    String zeile;
+                    ArrayList <Character> buchstaben = new ArrayList <Character>();
+                    while ((zeile = reader.readLine()) != null){
+                        for(int i = 0; i < zeile.length(); i++){
+                            buchstaben.add(zeile.charAt(i)); 
+                        }
                     }
+                    for (char wort : buchstaben) {
+                        sb.append(wort);
+                    }
+                    reader.close();
+                    return sb.toString();
+                } catch(IOException e) {
+                    e.printStackTrace();
                 }
-                for (char wort : buchstaben) {
-                    sb.append(wort);
-                }
-                reader.close();
                 return sb.toString();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-            return sb.toString();
 
-        }
+            }
 
             /**
              * Methode zum Ueberpruefen ob das gegebene Wort ein Palindrom ist
@@ -276,7 +307,15 @@ public class MathFunctions
                 long startTime = System.nanoTime();   
                 istPalindrom(wort);
                 long endTime = System.nanoTime();
-                return endTime - startTime;
+                long dauer = (endTime - startTime);
+                BufferedWriter output = null;
+                try{
+                    output = new BufferedWriter(new FileWriter("output.txt"));
+                    output.write(Long.toString(dauer) + "\n");
+                }catch(IOException e) {
+                    e.printStackTrace();
+                }
+                return dauer;
             }
         }
     }

@@ -12,6 +12,5 @@ public interface Palindrom
      *
      * Wird ueberschrieben 
      */
-    public abstract boolean istPalindrom(String wort);    
-    public abstract String dateiEinlesen();
+    public abstract boolean istPalindrom(String wort);
 }
