@@ -47,6 +47,14 @@ public class MathFunctionsTest
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void berechneTeilersummeTest2() {
+        long zahl = 1000000;
+        long expected = 2480437;
+        long actual = MathFunctions.berechneTeilersumme(zahl);
+        assertEquals(expected,actual);
+    }
+
     @Test (expected = IllegalArgumentException.class)
     public void berechneTeilersummeNegativeZahlTest() {
         long zahl = -1;
@@ -115,11 +123,13 @@ public class MathFunctionsTest
         long n = 3;
         assertTrue(MathFunctions.istSummeVonPotenzen(n));
     }
+
     @Test
     public void istSummeVonPotenzenFalseTest() {
         long n = 4;
-        assertTrue(MathFunctions.istSummeVonPotenzen(n));
+        assertFalse(MathFunctions.istSummeVonPotenzen(n));
     }
+
     @Test
     public void istSummeVonPotenzen2Test() {
         long n = 25;
@@ -133,9 +143,21 @@ public class MathFunctionsTest
     }
 
     @Test
+    public void istSummeVonPotenzen4Test() {
+        long n = 1002;
+        assertTrue(MathFunctions.istSummeVonPotenzen(n));
+    }
+
+    @Test
+    public void istSummeVonPotenzenFalseTest2() {
+        long n = 1011;
+        assertFalse(MathFunctions.istSummeVonPotenzen(n));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
     public void istSummeVonPotenzenNullTest() {
         long n = 0;
-        assertTrue(MathFunctions.istSummeVonPotenzen(n));
+        MathFunctions.istSummeVonPotenzen(n);
     }
 
     @Test (expected = IllegalArgumentException.class)
@@ -153,6 +175,7 @@ public class MathFunctionsTest
         double actual = MathFunctions.berechneReihensumme(n, x);
         assertEquals (expected, actual, delta);
     }
+
     @Test
     public void berechneReihensumme2Test() {
         int n = 1;
@@ -162,6 +185,7 @@ public class MathFunctionsTest
         double actual = MathFunctions.berechneReihensumme(n, x);
         assertEquals (expected, actual, delta);
     }
+
     @Test
     public void berechneReihensumme3Test() {
         int n = 2;
@@ -171,28 +195,134 @@ public class MathFunctionsTest
         double actual = MathFunctions.berechneReihensumme(n, x);
         assertEquals (expected, actual, delta);
     }
+
     @Test (expected = IllegalArgumentException.class)
     public void berechneReihensummeNull1Test() {
         int n = 0;
         double x = 3;
-        double delta = 0.01;
         double expected = 0.222222;
         MathFunctions.berechneReihensumme(n, x);
     }
+
     @Test (expected = IllegalArgumentException.class)
     public void berechneReihensummeNull2Test() {
         int n = 2;
         double x = 0;
-        double delta = 0.01;
         double expected = 0.222222;
         MathFunctions.berechneReihensumme(n, x);
     }
+
     @Test (expected = IllegalArgumentException.class)
     public void berechneReihensummeNull3Test() {
         int n = 0;
         double x = 0;
-        double delta = 0.01;
         double expected = 0.222222;
         MathFunctions.berechneReihensumme(n, x);
     }
+
+    @Test
+    public void berechneGgtTest(){
+        long a = 2;
+        long b = 4;
+        long expected = a;
+        long actual = MathFunctions.berechneGgt(a,b);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void berchneGgtTest2(){
+        long a = 1000;
+        long b = 1000000;
+        long expected = a;
+        long actual = MathFunctions.berechneGgt(a,b);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void berechneGgtTestNull(){
+        long a = 100;
+        long b = 0;
+        long expected = a;
+        long actual = MathFunctions.berechneGgt(a,b);
+        assertEquals(expected, actual);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void berechneGgtTestANegativ(){
+        long a = -1;
+        long b = 2;
+        MathFunctions.berechneGgt(a,b);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void berechneGgtTestBNegativ(){
+        long a = 1;
+        long b = -2;
+        MathFunctions.berechneGgt(a,b);
+    }  
+    
+    @Test
+    public void istPalindromRekursiv()
+    {
+        String wort = "Anna"; 
+        PalindromRekursiv p1 = new PalindromRekursiv();
+        assertTrue(p1.istPalindrom(wort));
+    }
+    
+    @Test
+    public void istPalindromRekursiv2()
+    {
+        String wort = "Rentner"; 
+        PalindromRekursiv p1 = new PalindromRekursiv();
+        assertTrue(p1.istPalindrom(wort));
+    }
+    
+    @Test
+    public void istPalindromIterativ()
+    {
+        String wort = "Anna";
+        PalindromIterativ p1 = new PalindromIterativ();
+        assertTrue(p1.istPalindrom(wort));
+    }
+    
+    @Test
+    public void istPalindromIterativ2()
+    {
+        String wort = "Rentner";
+        PalindromIterativ p1 = new PalindromIterativ();
+        assertTrue(p1.istPalindrom(wort));
+    }
+    
+    @Test
+    public void istPalindromRekursivFalse()
+    {
+        String wort = "Test"; 
+        PalindromRekursiv p1 = new PalindromRekursiv();
+        assertFalse(p1.istPalindrom(wort));
+    }
+    
+    @Test
+    public void istPalindromIterativFalse()
+    {
+        String wort = "AndererTest";
+        PalindromIterativ p1 = new PalindromIterativ();
+        assertFalse(p1.istPalindrom(wort));
+    }
+    
+    @Test
+    public void istPalindromRekursivNull()
+    {
+        String wort = null; 
+        PalindromRekursiv p1 = new PalindromRekursiv();
+        assertTrue(p1.istPalindrom(wort));
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void istPalindromIterativNull()
+    {
+        String wort = null;
+        PalindromIterativ p1 = new PalindromIterativ();
+        assertTrue(p1.istPalindrom(wort));
+    }
+    
 }

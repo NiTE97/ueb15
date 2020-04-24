@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Palindrom
+comment0.text=\n\ Interface\ Palindrom\n\ \n\ @author\ (Niklas\ Terwort\ &&\ Tobias\ Steuer)\ \n
+comment1.params=wort
+comment1.target=boolean\ istPalindrom(java.lang.String)
+comment1.text=\n\ Methode\ zum\ Ueberpruefen\ ob\ das\ gegebene\ Wort\ ein\ Palindrom\ ist\n\ param\ String\ Wort\ \ \ \ Das\ zu\ pruefende\ Wort\ \ \ \ \ \n\n\ Wird\ ueberschrieben\ \n
+comment2.params=
+comment2.target=java.lang.String\ dateiEinlesen()
+numComments=3

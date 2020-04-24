@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.io.*;
+
 /**
  * Klasse MathFunctions.
  * 
@@ -24,12 +27,12 @@ public class MathFunctions
     public static long berechneTeilersumme(long zahl){
         Validator.check(zahl < 0, NEGATIV);
         long teilersumme = 0;
-        for (int i = 1; i <= zahl; i++){
+        for (int i = 1; i <= zahl/2; i++){
             if (zahl % i == 0){
                 teilersumme += i;
             }
         }
-        return teilersumme;
+        return teilersumme + zahl;
     }
 
     /**
@@ -88,10 +91,10 @@ public class MathFunctions
      * return boolean istSummeVonPotenzen
      */
     public static boolean istSummeVonPotenzen(long n){
-        Validator.check(n < 0, NEGATIV);
-        for (long a = 0; (a*a*a*a)<= n; a++){
-            for (long b = 0; (b*b*b) <= n; b++){
-                for (long c = 0; (c*c) <= n; c++){
+        Validator.check(n <= 0, NULL);
+        for (int a = 1; (a*a*a*a)<= n; a++){
+            for (int b = 1; (b*b*b) <= n; b++){
+                for (int c = 1; (c*c) <= n; c++){
                     if (n == (a*a*a*a) + (b*b*b) + (c*c)){
                         return true;
                     }
@@ -115,5 +118,166 @@ public class MathFunctions
         Validator.check(n == 0 || x == 0, NULL);
         s = (Math.pow((x-1),n)) / (n * (Math.pow(x,n)));
         return s;
+    }
+
+    /**
+     * Methode zum Berechnen des GGT nach Euklid rekursiv
+     * param long a     Darf nicht negativ sein
+     * param long b     Darf nicht negativ sein
+     * 
+     * ggT(a,0) = a
+     * ggT(a,b) = ggT(b, a mod b)
+     * 
+     * return long ggt
+     */
+    public static long berechneGgt(long a, long b){
+        Validator.check (a < 0 || b < 0, NEGATIV);
+        if (a < b){
+            long c = b;
+            b = a;
+            a = c;
+        }
+        if (b != 0){
+            return berechneGgt(b, a % b);
+        }
+        else{
+            return a;
+        }
+    }
+
+    static class PalindromIterativ implements Palindrom
+    {
+        private static final String INPUT_ERR = "Die Eingabe darf nicht leer sein!";
+
+        /**
+         * Methode zum Einlesen einer Datei
+         */
+        @Override
+        public String dateiEinlesen(){
+            File datei = new File("input.txt");
+            StringBuffer sb = new StringBuffer();
+
+            try {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(datei)));
+                String zeile;
+                ArrayList <Character> buchstaben = new ArrayList <Character>();
+                while ((zeile = reader.readLine()) != null){
+                    for(int i = 0; i < zeile.length(); i++){
+                        buchstaben.add(zeile.charAt(i)); 
+                    }
+                }
+                for (char wort : buchstaben) {
+                    sb.append(wort);
+                }
+                reader.close();
+                return sb.toString();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            return sb.toString();
+
+        }
+
+        /**
+         * Methode zum Ueberpruefen ob das gegebene Wort ein Palindrom ist
+         * param String Wort    Das zu pruefende Wort
+         * 
+         */
+        @Override
+        public boolean istPalindrom(String wort){  
+            Validator.check (wort == null || wort.trim().isEmpty(), INPUT_ERR);
+            wort = wort.toUpperCase();
+            ArrayList <Character> buchstaben = new ArrayList <Character>();
+            for ( int i = 0; i < wort.length(); i++){
+                buchstaben.add(wort.charAt(i));   
+            }
+            for(int i = 0; i < buchstaben.size(); i++){
+                for (int p = buchstaben.size() - 1; p >= i; p--){
+                    return buchstaben.get(i).equals(buchstaben.get(p));
+                }
+            }
+            return false; 
+        }
+
+        /**
+         * Methode zum Messen wie lange die Methode braucht um ein Palindrom zu ueberpruefen
+         */
+        public long istPalindromCheckTime(String wort){
+            long startTime = System.nanoTime();   
+            istPalindrom(wort);
+            long endTime = System.nanoTime();
+            FileOutputStream out = null;
+            try{
+                out = new FileOutputStream("output.txt");
+                out.write((int)(endTime - startTime));
+            }catch(IOException e) {
+                e.printStackTrace();
+            }
+            return endTime - startTime;
+        }
+
+        static class PalindromRekursiv implements Palindrom
+        {
+            /**
+             * Methode zum Einlesen einer Datei
+             */
+            @Override
+            public String dateiEinlesen(){
+                File datei = new File("input.txt");
+            StringBuffer sb = new StringBuffer();
+
+            try {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(datei)));
+                String zeile;
+                ArrayList <Character> buchstaben = new ArrayList <Character>();
+                while ((zeile = reader.readLine()) != null){
+                    for(int i = 0; i < zeile.length(); i++){
+                        buchstaben.add(zeile.charAt(i)); 
+                    }
+                }
+                for (char wort : buchstaben) {
+                    sb.append(wort);
+                }
+                reader.close();
+                return sb.toString();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            return sb.toString();
+
+        }
+
+            /**
+             * Methode zum Ueberpruefen ob das gegebene Wort ein Palindrom ist
+             * param String Wort    Das zu pruefende Wort
+             * 
+             */
+            @Override
+            public boolean istPalindrom(String wort){
+                if(wort == null || wort.trim().isEmpty() || wort.length() == 1){
+                    return true;
+                }
+                wort = wort.toUpperCase();
+                ArrayList <Character> buchstaben = new ArrayList <Character>();
+                for ( int i = 0; i < wort.length(); i++){
+                    buchstaben.add(wort.charAt(i));   
+                }
+                if(buchstaben.get(0).equals(buchstaben.get(buchstaben.size()-1))){
+                    return istPalindrom(wort.substring(1, wort.length()-1));
+                }
+
+                return false; 
+            }
+
+            /**
+             * Methode zum Messen wie lange die Methode braucht um ein Palindrom zu ueberpruefen
+             */
+            public long istPalindromCheckTime(String wort){
+                long startTime = System.nanoTime();   
+                istPalindrom(wort);
+                long endTime = System.nanoTime();
+                return endTime - startTime;
+            }
+        }
     }
 }
