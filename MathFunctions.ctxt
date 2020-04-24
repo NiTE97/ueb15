@@ -16,4 +16,7 @@ comment4.text=\n\ Methode\ zum\ Ueberpruefen,\ ob\ einer\ Zahl\ Summe\ aus\ Pote
 comment5.params=n\ x
 comment5.target=double\ berechneReihensumme(int,\ double)
 comment5.text=\n\ Methode\ zum\ Berechnen\ der\ Reihensumme\n\ param\ int\ m\n\ param\ double\ x\n\n\ (x-1)^n\ /\ nx^n\n\n\ return\ double\ ergebnis\n
-numComments=6
+comment6.params=a\ b
+comment6.target=long\ berechneGgt(long,\ long)
+comment6.text=\n\ Methode\ zum\ Berechnen\ des\ GGT\ nach\ Euklid\ rekursiv\n\ param\ long\ a\ \ \ \ \ Darf\ nicht\ negativ\ sein\n\ param\ long\ b\ \ \ \ \ Darf\ nicht\ negativ\ sein\n\ \n\ ggT(a,0)\ \=\ a\n\ ggT(a,b)\ \=\ ggT(b,\ a\ mod\ b)\n\ \n\ return\ long\ ggt\n
+numComments=7
