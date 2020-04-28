@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PalindromRekursiv
+comment1.params=wort
+comment1.target=boolean\ istPalindrom(java.lang.String)
+comment2.params=wort
+comment2.target=boolean\ rekursiv(java.lang.String)
+comment3.params=pfad
+comment3.target=java.lang.String\ einlesen(java.lang.String)
+numComments=4

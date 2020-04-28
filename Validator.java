@@ -1,4 +1,4 @@
- public class Validator {
+public class Validator {
 
         public static void check(boolean bedingung, String msg){
             if(bedingung){

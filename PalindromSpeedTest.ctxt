@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=PalindromSpeedTest
+comment0.text=\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ IterationTest.\n\ \n\ @author\ (Niklas\ Terwort\ &&\ Tobias\ Steuer)\ \n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ tests()
+comment3.params=wort
+comment3.target=long\ istPalindromCheckTimeRekursiv(java.lang.String)
+comment3.text=\n\ Methode\ zum\ Messen\ wie\ lange\ die\ Methode\ braucht\ um\ ein\ Palindrom\ zu\ ueberpruefen\n
+comment4.params=wort
+comment4.target=long\ istPalindromCheckTimeIterativ(java.lang.String)
+numComments=5
