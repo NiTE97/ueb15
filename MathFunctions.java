@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.io.*;
 
@@ -7,8 +6,7 @@ import java.io.*;
  * 
  * @author (Niklas Terwort && Tobias Steuer) 
  */
-public class MathFunctions
-{
+public class MathFunctions {
 
     /**
      * Klassenkonstanten
@@ -20,19 +18,20 @@ public class MathFunctions
     private static final long MAX_ISBN = 999999999;
     private static final double EPSILON = 1.0E-08;
 
-    private static BufferedWriter output = null;
+    private static BufferedWriter output ;
     private static File file = new File("output.txt");
+
     /**
      * Methode zum Berechnen der Teilersumme
      * param long zahl
-     * 
+     * <p>
      * return long teilersumme
      */
-    public static long berechneTeilersumme(long zahl){
+    public static long berechneTeilersumme(long zahl) {
         Validator.check(zahl < 0, NEGATIV);
         long teilersumme = 0;
-        for (int i = 1; i <= zahl/2; i++){
-            if (zahl % i == 0){
+        for (int i = 1; i <= zahl / 2; i++) {
+            if (zahl % i == 0) {
                 teilersumme += i;
             }
         }
@@ -42,22 +41,22 @@ public class MathFunctions
     /**
      * Methode zum Berechnen der Checksumme der ISBN
      * param long isbn
-     * 
+     * <p>
      * return String checksumme
      */
-    public static String berechneChecksummeIsbn(long isbn){
+    public static String berechneChecksummeIsbn(long isbn) {
         Validator.check(isbn < MIN_ISBN || isbn > MAX_ISBN, ISBN_FALSCH);
         long checksumme = 0;
         int i = 9;
         String ausgabe = "Checksumme: ";
-        while (isbn > 0){
+        while (isbn > 0) {
             checksumme += (isbn % 10) * i;
             isbn = isbn / 10;
             i--;
         }
-        if(checksumme % 11 == 10){
+        if (checksumme % 11 == 10) {
             return ausgabe + "X";
-        } else{
+        } else {
             return ausgabe + checksumme % 11;
         }
     }
@@ -66,22 +65,22 @@ public class MathFunctions
      * Methode zum Berechnen der Nullstellen
      * param double p
      * param double q
-     * 
+     * <p>
      * return String nullstellen
      */
-    public static String berechneNullstellen(double p, double q){
+    public static String berechneNullstellen(double p, double q) {
         String nullstellen = "";
         double diskriminante, x, x1, x2;
-        diskriminante = (p / 2) * (p / 2) -q;
-        if (diskriminante >= EPSILON){
-            x1 = -(p/2) + Math.sqrt(diskriminante);
-            x2 = -(p/2) - Math.sqrt(diskriminante);
+        diskriminante = (p / 2) * (p / 2) - q;
+        if (diskriminante >= EPSILON) {
+            x1 = -(p / 2) + Math.sqrt(diskriminante);
+            x2 = -(p / 2) - Math.sqrt(diskriminante);
             nullstellen += "Zwei Nullstellen: " + x1 + " | " + x2;
         } else {
-            if (diskriminante <= -EPSILON){
+            if (diskriminante <= -EPSILON) {
                 nullstellen += "Die Funktion hat komplexe Nullstellen.";
             } else {
-                x =  - (p/2);
+                x = -(p / 2);
                 nullstellen += "Die Funktion hat eine doppelte Nullstelle bei " + x;
             }
         }
@@ -91,15 +90,15 @@ public class MathFunctions
     /**
      * Methode zum Ueberpruefen, ob einer Zahl Summe aus Potenzen ist
      * param long n
-     * 
+     * <p>
      * return boolean istSummeVonPotenzen
      */
-    public static boolean istSummeVonPotenzen(long n){
+    public static boolean istSummeVonPotenzen(long n) {
         Validator.check(n <= 0, NULL);
-        for (int a = 1; (a*a*a*a)<= n; a++){
-            for (int b = 1; (b*b*b) <= n; b++){
-                for (int c = 1; (c*c) <= n; c++){
-                    if (n == (a*a*a*a) + (b*b*b) + (c*c)){
+        for (int a = 1; (a * a * a * a) <= n; a++) {
+            for (int b = 1; (b * b * b) <= n; b++) {
+                for (int c = 1; (c * c) <= n; c++) {
+                    if (n == (a * a * a * a) + (b * b * b) + (c * c)) {
                         return true;
                     }
                 }
@@ -112,15 +111,15 @@ public class MathFunctions
      * Methode zum Berechnen der Reihensumme
      * param int m
      * param double x
-     *
+     * <p>
      * (x-1)^n / nx^n
-     *
+     * <p>
      * return double ergebnis
      */
-    public static double berechneReihensumme (int n, double x){
-        double s = 0;
+    public static double berechneReihensumme(int n, double x) {
+        double s;
         Validator.check(n == 0 || x == 0, NULL);
-        s = (Math.pow((x-1),n)) / (n * (Math.pow(x,n)));
+        s = (Math.pow((x - 1), n)) / (n * (Math.pow(x, n)));
         return s;
     }
 
@@ -128,195 +127,23 @@ public class MathFunctions
      * Methode zum Berechnen des GGT nach Euklid rekursiv
      * param long a     Darf nicht negativ sein
      * param long b     Darf nicht negativ sein
-     * 
+     * <p>
      * ggT(a,0) = a
      * ggT(a,b) = ggT(b, a mod b)
-     * 
+     * <p>
      * return long ggt
      */
-    public static long berechneGgt(long a, long b){
-        Validator.check (a < 0 || b < 0, NEGATIV);
-        if (a < b){
+    public static long berechneGgt(long a, long b) {
+        Validator.check(a < 0 || b < 0, NEGATIV);
+        if (a < b) {
             long c = b;
             b = a;
             a = c;
         }
-        if (b != 0){
+        if (b != 0) {
             return berechneGgt(b, a % b);
-        }
-        else{
+        } else {
             return a;
-        }
-    }
-
-    static class PalindromIterativ implements Palindrom
-    {
-        private static final String INPUT_ERR = "Die Eingabe darf nicht leer sein!";
-
-        /**
-         * Methode zum Einlesen einer Datei
-         */
-        @Override
-        public String dateiEinlesen(){
-            File datei = new File("input.txt");
-            StringBuffer sb = new StringBuffer();
-
-            try {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(datei)));
-                String zeile;
-                ArrayList <Character> buchstaben = new ArrayList <Character>();
-                while ((zeile = reader.readLine()) != null){
-                    for(int i = 0; i < zeile.length(); i++){
-                        buchstaben.add(zeile.charAt(i)); 
-                    }
-                }
-                for (char wort : buchstaben) {
-                    sb.append(wort);
-                }
-                reader.close();
-                return sb.toString();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-            return sb.toString();
-
-        }
-
-        /**
-         * Methode zum Ueberpruefen ob das gegebene Wort ein Palindrom ist
-         * param String Wort    Das zu pruefende Wort
-         * 
-         */
-        @Override
-        public boolean istPalindrom(String wort){  
-            Validator.check (wort == null || wort.trim().isEmpty(), INPUT_ERR);
-            wort = wort.toUpperCase();
-            ArrayList <Character> buchstaben = new ArrayList <Character>();
-            for ( int i = 0; i < wort.length(); i++){
-                buchstaben.add(wort.charAt(i));   
-            }
-            for(int i = 0; i < buchstaben.size(); i++){
-                for (int p = buchstaben.size() - 1; p >= i; p--){
-                    return buchstaben.get(i).equals(buchstaben.get(p));
-                }
-            }
-            return false; 
-        }
-
-        /**
-         * Methode zum Messen wie lange die Methode braucht um ein Palindrom zu ueberpruefen
-         */
-        public long istPalindromCheckTime(String wort){
-            long startTime = System.nanoTime();   
-            istPalindrom(wort);
-            long endTime = System.nanoTime();
-            long dauer = (endTime - startTime);
-            return dauer;
-        }
-
-        public String testReihe(){
-            ArrayList <String> buchstaben = new ArrayList <String>();
-            String a = "aa";
-            PalindromIterativ p1 = new PalindromIterativ();
-            StringBuffer sb = null;
-            StringBuffer ausgabe = new StringBuffer();
-            
-            try{
-                if (!file.exists()) {
-                    file.createNewFile();
-                }
-                output = new BufferedWriter(new FileWriter(file));
-                for (int i = 0; i < 25; i++){
-                    buchstaben.add(a); 
-                    sb = new StringBuffer();
-                    for (String wort : buchstaben) {
-                        sb.append(wort);
-                    }
-                    output.write(p1.istPalindromCheckTime(sb.toString()) + ", ");
-                }
-            }catch (IOException e) {
-                e.printStackTrace();   
-            }finally{
-                try{
-                    output.flush();
-                    output.close();
-                }catch (IOException e) {
-                    e.printStackTrace(); 
-                }
-            }
-            return ausgabe.toString();        
-        }
-
-        static class PalindromRekursiv implements Palindrom
-        {
-            /**
-             * Methode zum Einlesen einer Datei
-             */
-            @Override
-            public String dateiEinlesen(){
-                File datei = new File("input.txt");
-                StringBuffer sb = new StringBuffer();
-
-                try {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(datei)));
-                    String zeile;
-                    ArrayList <Character> buchstaben = new ArrayList <Character>();
-                    while ((zeile = reader.readLine()) != null){
-                        for(int i = 0; i < zeile.length(); i++){
-                            buchstaben.add(zeile.charAt(i)); 
-                        }
-                    }
-                    for (char wort : buchstaben) {
-                        sb.append(wort);
-                    }
-                    reader.close();
-                    return sb.toString();
-                } catch(IOException e) {
-                    e.printStackTrace();
-                }
-                return sb.toString();
-
-            }
-
-            /**
-             * Methode zum Ueberpruefen ob das gegebene Wort ein Palindrom ist
-             * param String Wort    Das zu pruefende Wort
-             * 
-             */
-            @Override
-            public boolean istPalindrom(String wort){
-                if(wort == null || wort.trim().isEmpty() || wort.length() == 1){
-                    return true;
-                }
-                wort = wort.toUpperCase();
-                ArrayList <Character> buchstaben = new ArrayList <Character>();
-                for ( int i = 0; i < wort.length(); i++){
-                    buchstaben.add(wort.charAt(i));   
-                }
-                if(buchstaben.get(0).equals(buchstaben.get(buchstaben.size()-1))){
-                    return istPalindrom(wort.substring(1, wort.length()-1));
-                }
-
-                return false; 
-            }
-
-            /**
-             * Methode zum Messen wie lange die Methode braucht um ein Palindrom zu ueberpruefen
-             */
-            public long istPalindromCheckTime(String wort){
-                long startTime = System.nanoTime();   
-                istPalindrom(wort);
-                long endTime = System.nanoTime();
-                long dauer = (endTime - startTime);
-                BufferedWriter output = null;
-                try{
-                    output = new BufferedWriter(new FileWriter("output.txt"));
-                    output.write(Long.toString(dauer) + "\n");
-                }catch(IOException e) {
-                    e.printStackTrace();
-                }
-                return dauer;
-            }
         }
     }
 }

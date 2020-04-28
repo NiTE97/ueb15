@@ -3,20 +3,20 @@ comment0.target=MathFunctions
 comment0.text=\n\ Klasse\ MathFunctions.\n\ \n\ @author\ (Niklas\ Terwort\ &&\ Tobias\ Steuer)\ \n
 comment1.params=zahl
 comment1.target=long\ berechneTeilersumme(long)
-comment1.text=\n\ Methode\ zum\ Berechnen\ der\ Teilersumme\n\ param\ long\ zahl\n\ \n\ return\ long\ teilersumme\n
+comment1.text=\n\ Methode\ zum\ Berechnen\ der\ Teilersumme\n\ param\ long\ zahl\n\ <p>\n\ return\ long\ teilersumme\n
 comment2.params=isbn
 comment2.target=java.lang.String\ berechneChecksummeIsbn(long)
-comment2.text=\n\ Methode\ zum\ Berechnen\ der\ Checksumme\ der\ ISBN\n\ param\ long\ isbn\n\ \n\ return\ String\ checksumme\n
+comment2.text=\n\ Methode\ zum\ Berechnen\ der\ Checksumme\ der\ ISBN\n\ param\ long\ isbn\n\ <p>\n\ return\ String\ checksumme\n
 comment3.params=p\ q
 comment3.target=java.lang.String\ berechneNullstellen(double,\ double)
-comment3.text=\n\ Methode\ zum\ Berechnen\ der\ Nullstellen\n\ param\ double\ p\n\ param\ double\ q\n\ \n\ return\ String\ nullstellen\n
+comment3.text=\n\ Methode\ zum\ Berechnen\ der\ Nullstellen\n\ param\ double\ p\n\ param\ double\ q\n\ <p>\n\ return\ String\ nullstellen\n
 comment4.params=n
 comment4.target=boolean\ istSummeVonPotenzen(long)
-comment4.text=\n\ Methode\ zum\ Ueberpruefen,\ ob\ einer\ Zahl\ Summe\ aus\ Potenzen\ ist\n\ param\ long\ n\n\ \n\ return\ boolean\ istSummeVonPotenzen\n
+comment4.text=\n\ Methode\ zum\ Ueberpruefen,\ ob\ einer\ Zahl\ Summe\ aus\ Potenzen\ ist\n\ param\ long\ n\n\ <p>\n\ return\ boolean\ istSummeVonPotenzen\n
 comment5.params=n\ x
 comment5.target=double\ berechneReihensumme(int,\ double)
-comment5.text=\n\ Methode\ zum\ Berechnen\ der\ Reihensumme\n\ param\ int\ m\n\ param\ double\ x\n\n\ (x-1)^n\ /\ nx^n\n\n\ return\ double\ ergebnis\n
+comment5.text=\n\ Methode\ zum\ Berechnen\ der\ Reihensumme\n\ param\ int\ m\n\ param\ double\ x\n\ <p>\n\ (x-1)^n\ /\ nx^n\n\ <p>\n\ return\ double\ ergebnis\n
 comment6.params=a\ b
 comment6.target=long\ berechneGgt(long,\ long)
-comment6.text=\n\ Methode\ zum\ Berechnen\ des\ GGT\ nach\ Euklid\ rekursiv\n\ param\ long\ a\ \ \ \ \ Darf\ nicht\ negativ\ sein\n\ param\ long\ b\ \ \ \ \ Darf\ nicht\ negativ\ sein\n\ \n\ ggT(a,0)\ \=\ a\n\ ggT(a,b)\ \=\ ggT(b,\ a\ mod\ b)\n\ \n\ return\ long\ ggt\n
+comment6.text=\n\ Methode\ zum\ Berechnen\ des\ GGT\ nach\ Euklid\ rekursiv\n\ param\ long\ a\ \ \ \ \ Darf\ nicht\ negativ\ sein\n\ param\ long\ b\ \ \ \ \ Darf\ nicht\ negativ\ sein\n\ <p>\n\ ggT(a,0)\ \=\ a\n\ ggT(a,b)\ \=\ ggT(b,\ a\ mod\ b)\n\ <p>\n\ return\ long\ ggt\n
 numComments=7

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=PalindromIterativ
+comment1.params=wort
+comment1.target=boolean\ istPalindrom(java.lang.String)
+comment2.params=pfad
+comment2.target=java.lang.String\ einlesen(java.lang.String)
+numComments=3

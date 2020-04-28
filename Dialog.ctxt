@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Dialog
+comment1.params=
+comment1.target=Dialog()
+comment2.params=
+comment2.target=void\ start()
+comment3.params=
+comment3.target=int\ dialogListe()
+comment3.text=\n\ Method\ dialogListe\ Fordert\ den\ Nutzer\ auf\ ein\ lager\ zu\ erstellen\ mit\ vorgegebener\ oder\ individueller\ Laenge\n
+comment4.params=
+comment4.target=int\ mathFunctionsDialog()
+comment5.params=
+comment5.target=int\ palindromDialog()
+comment6.params=funktion
+comment6.target=void\ ausfuehrenFunktion(int)
+comment7.params=funktion
+comment7.target=void\ palindromFunktion(int)
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9
